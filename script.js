@@ -6,6 +6,7 @@ cobra[0] = { // tamanho
     x: 8 * box,
     y: 8 * box
 }
+let direcao = "direita";
 
 function criarBG(){
     context.fillStyle = "lightgreen"; //cor
@@ -19,5 +20,26 @@ function criarCobra(){
     }
 }
 
-criarBG();
-criarCobra();
+function iniciarJogo(){
+    criarBG();
+    criarCobra();
+
+    let cobraX = cobra[0].x;
+    let cobraY = cobra[0].y;
+
+    if(direcao == "direita") cobraX += box; //direção direita
+    if(direcao == "esquerda") cobraX -= box; // direção esquerda
+    if(direcao == "cima") cobraY -= box; //direção cima
+    if(direcao == "baixo") cobraY += box; //direção baixo
+
+    cobra.pop(); //retira o ultimo elemento da função
+
+    let cabeca = { //cabeça da cobra
+        x: cobraX,
+        y: cobraY
+    }
+
+    cobra.unshift(cabeca); //adciona um 
+}
+
+let jogo = setInterval(iniciarJogo, 100); //determinando um intervalo em milisegundos para a função ser renovada
