@@ -7,6 +7,10 @@ cobra[0] = { // tamanho
     y: 8 * box
 }
 let direcao = "direita";
+let lugarComida = { //mudando a comida de posição
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box
+}
 
 function criarBG(){
     context.fillStyle = "lightgreen"; //cor
@@ -18,6 +22,11 @@ function criarCobra(){
         context.fillStyle = "green"; //cor da cobra
         context.fillRect(cobra[i].x, cobra[i].y, box, box); //tamanho da cobra
     }
+}
+
+function comida(){
+    context.fillStyle = "red";
+    context.fillRect(lugarComida.x, lugarComida.y, box, box);
 }
 
 document.addEventListener('keydown', update); //reconhece eventos do teclado
@@ -38,6 +47,7 @@ function iniciarJogo(){ //para cobra voltar para a tela quando chegar no final
 
     criarBG();
     criarCobra();
+    comida()
 
     let cobraX = cobra[0].x;
     let cobraY = cobra[0].y;
