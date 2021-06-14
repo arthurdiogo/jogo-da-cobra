@@ -45,6 +45,13 @@ function iniciarJogo(){ //para cobra voltar para a tela quando chegar no final
     if(cobra[0].y > 16 * box && direcao == "baixo") cobra[0].y = 0;
     if(cobra[0].y < 0 && direcao == "cima") cobra[0].y = 16 * box;
 
+    for(i=1;i<cobra.length;i++){ //morte da cobra
+        if(cobra[0].x == cobra[i].x && cobra[0].y == cobra[i].y){
+            clearInterval(jogo);
+            alert("Infelizmente você perdeu! :(");
+        }
+    }
+
     criarBG();
     criarCobra();
     comida()
