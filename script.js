@@ -57,7 +57,14 @@ function iniciarJogo(){ //para cobra voltar para a tela quando chegar no final
     if(direcao == "cima") cobraY -= box; //direção cima
     if(direcao == "baixo") cobraY += box; //direção baixo
 
-    cobra.pop(); //retira o ultimo elemento da função
+    if(cobraX != lugarComida.x || cobraY != lugarComida.y){
+        cobra.pop(); //retira o ultimo elemento da função
+    }
+    else{
+        lugarComida.x = Math.floor(Math.random() * 15 + 1) * box;
+        lugarComida.y = Math.floor(Math.random() * 15 + 1) * box;
+    }
+
 
     let cabeca = { //cabeça da cobra
         x: cobraX,
